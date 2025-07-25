@@ -136,12 +136,15 @@
 
         .grade-select {
             width: 100%;
-            padding: 12px;
+            max-width: 120px;
+            padding: 8px 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
             background: white;
             cursor: pointer;
+            margin: 0 auto;
+            display: block;
         }
 
         .grade-select:focus {
@@ -372,6 +375,121 @@
             background: #dc3545;
         }
 
+        /* 검색 섹션 스타일 */
+        .search-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-section h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            max-width: 300px;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #4facfe;
+        }
+
+        .search-btn, .clear-search-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .clear-search-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        .clear-search-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        /* 실시간 프리뷰 스타일 */
+        .realtime-preview {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .realtime-preview.active {
+            border-color: #4facfe;
+            box-shadow: 0 5px 20px rgba(79, 172, 254, 0.2);
+        }
+
+        .realtime-preview h4 {
+            color: #4facfe;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .preview-grade {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .preview-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .preview-breakdown div {
+            text-align: center;
+            padding: 5px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
         .no-results {
             text-align: center;
             padding: 60px 40px;
@@ -382,6 +500,91 @@
         .no-results h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
+        }
+
+        /* 카드 스택 애니메이션 */
+        @keyframes cardSlideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        @keyframes cardFadeOut {
+            from { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+            to { 
+                opacity: 0; 
+                transform: translateY(-20px) scale(0.95); 
+            }
+        }
+
+        .university-card {
+            animation: cardSlideIn 0.6s ease forwards;
+            animation-delay: calc(var(--card-index) * 0.1s);
+            opacity: 0;
+        }
+
+        .university-card.fade-out {
+            animation: cardFadeOut 0.3s ease forwards;
+        }
+
+        /* 성적 저장 관련 스타일 */
+        .save-section {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .save-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .save-btn, .load-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .load-btn {
+            background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+            color: white;
+        }
+
+        .load-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.4);
+        }
+
+        .save-status {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
         }
 
         @media (max-width: 768px) {
@@ -521,7 +724,37 @@
                     </div>
                 </div>
 
+                <!-- 실시간 프리뷰 영역 -->
+                <div class="realtime-preview" id="realtimePreview" style="display: none;">
+                    <h4>📊 실시간 평균 등급</h4>
+                    <div class="preview-grade" id="previewGrade">-</div>
+                    <div class="preview-breakdown" id="previewBreakdown"></div>
+                </div>
+
                 <button class="predict-btn" id="predictBtn" disabled>🔮 합격 가능성 예측하기</button>
+                
+                <div class="search-section">
+                    <h3>🔍 대학/학과 검색</h3>
+                    <div class="search-input-group">
+                        <input type="text" id="searchInput" placeholder="대학명 또는 학과명을 입력하세요..." class="search-input">
+                        <button id="searchBtn" class="search-btn">검색</button>
+                        <button id="clearSearchBtn" class="clear-search-btn">전체보기</button>
+                    </div>
+                    <p style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 10px;">
+                        💡 검색하면 모든 대학의 해당 학과를 등급순으로 보여드립니다
+                    </p>
+                </div>
+
+                <!-- 성적 저장 기능 -->
+                <div class="save-section">
+                    <h4 style="color: #333; margin-bottom: 10px;">💾 성적 저장 & 불러오기</h4>
+                    <p style="color: #666; font-size: 0.9rem; margin-bottom: 15px;">입력한 성적을 저장하고 다음에 빠르게 불러올 수 있습니다</p>
+                    <div class="save-buttons">
+                        <button id="saveBtn" class="save-btn">💾 성적 저장</button>
+                        <button id="loadBtn" class="load-btn">📂 성적 불러오기</button>
+                    </div>
+                    <div id="saveStatus" class="save-status"></div>
+                </div>
             </div>
 
             <div class="results-section" id="resultsSection">
@@ -536,17 +769,7 @@
                     <div class="grade-breakdown" id="gradeBreakdown"></div>
                 </div>
 
-                <div class="probability-tabs">
-                    <button class="probability-tab safe active" data-type="safe">
-                        안정권 (80%+)
-                    </button>
-                    <button class="probability-tab moderate" data-type="moderate">
-                        적정권 (60%+)
-                    </button>
-                    <button class="probability-tab challenge" data-type="challenge">
-                        소신권 (30%+)
-                    </button>
-                </div>
+
 
                 <div class="university-grid" id="universityGrid">
                     <!-- 결과가 여기에 표시됩니다 -->
@@ -558,8 +781,9 @@
     <script>
         // 전역 변수
         let selectedTrack = '';
-        let currentProbabilityType = 'safe';
         let calculatedAverageGrade = 0;
+        let allResults = [];
+        let cardAnimationIndex = 0;
 
         // 대학 데이터 (실제로는 JSON 파일에서 로드)
         let universityData = {
@@ -641,13 +865,232 @@
                 this.classList.add('selected');
                 selectedTrack = this.dataset.track;
                 updatePredictButton();
+                updateRealtimePreview(); // 실시간 프리뷰 업데이트 추가
             });
         });
 
-        // 등급 선택 처리
+        // 등급 선택 처리 (실시간 계산 추가)
         document.querySelectorAll('.grade-select').forEach(select => {
-            select.addEventListener('change', updatePredictButton);
+            select.addEventListener('change', function() {
+                updatePredictButton();
+                updateRealtimePreview(); // 실시간 계산 추가
+            });
         });
+
+        // 실시간 프리뷰 업데이트
+        function updateRealtimePreview() {
+            const korean = document.getElementById('korean').value;
+            const english = document.getElementById('english').value;
+            const math = document.getElementById('math').value;
+            const inquiry1 = document.getElementById('inquiry1').value;
+            const inquiry2 = document.getElementById('inquiry2').value;
+
+            const preview = document.getElementById('realtimePreview');
+            
+            if (selectedTrack && korean && english && math && inquiry1 && inquiry2) {
+                const userGrades = {
+                    korean: parseInt(korean),
+                    english: parseInt(english),
+                    math: parseInt(math),
+                    inquiry1: parseInt(inquiry1),
+                    inquiry2: parseInt(inquiry2)
+                };
+
+                const averageGrade = calculateAverageGrade(userGrades, selectedTrack);
+                const inquiryAverage = (userGrades.inquiry1 + userGrades.inquiry2) / 2;
+
+                document.getElementById('previewGrade').textContent = averageGrade.toFixed(2);
+                
+                const breakdown = selectedTrack === '문과' ? {
+                    '국어': `${korean} (30%)`,
+                    '수학': `${math} (30%)`,
+                    '영어': `${english} (15%)`,
+                    '탐구': `${inquiryAverage.toFixed(1)} (25%)`
+                } : {
+                    '국어': `${korean} (25%)`,
+                    '수학': `${math} (33%)`,
+                    '영어': `${english} (15%)`,
+                    '탐구': `${inquiryAverage.toFixed(1)} (27%)`
+                };
+                
+                const breakdownContainer = document.getElementById('previewBreakdown');
+                breakdownContainer.innerHTML = '';
+                Object.entries(breakdown).forEach(([subject, info]) => {
+                    const div = document.createElement('div');
+                    div.innerHTML = `<strong>${subject}</strong><br>${info}`;
+                    breakdownContainer.appendChild(div);
+                });
+
+                preview.style.display = 'block';
+                preview.classList.add('active');
+            } else {
+                preview.style.display = 'none';
+                preview.classList.remove('active');
+            }
+        }
+
+        // 성적 저장 기능
+        document.getElementById('saveBtn').addEventListener('click', saveGrades);
+        document.getElementById('loadBtn').addEventListener('click', loadGrades);
+
+        function saveGrades() {
+            const korean = document.getElementById('korean').value;
+            const english = document.getElementById('english').value;
+            const math = document.getElementById('math').value;
+            const inquiry1 = document.getElementById('inquiry1').value;
+            const inquiry2 = document.getElementById('inquiry2').value;
+
+            if (!selectedTrack || !korean || !english || !math || !inquiry1 || !inquiry2) {
+                showSaveStatus('❌ 모든 정보를 입력한 후 저장해주세요', 'error');
+                return;
+            }
+
+            const gradeData = {
+                track: selectedTrack,
+                korean: korean,
+                english: english,
+                math: math,
+                inquiry1: inquiry1,
+                inquiry2: inquiry2,
+                savedAt: new Date().toLocaleString()
+            };
+
+            // 메모리에 저장 (실제 구현시에는 localStorage 사용)
+            window.savedGrades = gradeData;
+            showSaveStatus('✅ 성적이 저장되었습니다!', 'success');
+        }
+
+        function loadGrades() {
+            if (!window.savedGrades) {
+                showSaveStatus('❌ 저장된 성적이 없습니다', 'error');
+                return;
+            }
+
+            const data = window.savedGrades;
+            
+            // 계열 선택
+            document.querySelectorAll('.track-option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelector(`[data-track="${data.track}"]`).classList.add('selected');
+            selectedTrack = data.track;
+
+            // 등급 입력
+            document.getElementById('korean').value = data.korean;
+            document.getElementById('english').value = data.english;
+            document.getElementById('math').value = data.math;
+            document.getElementById('inquiry1').value = data.inquiry1;
+            document.getElementById('inquiry2').value = data.inquiry2;
+
+            updatePredictButton();
+            updateRealtimePreview();
+            showSaveStatus(`✅ 성적을 불러왔습니다 (${data.savedAt})`, 'success');
+        }
+
+        function showSaveStatus(message, type) {
+            const statusEl = document.getElementById('saveStatus');
+            statusEl.textContent = message;
+            statusEl.style.color = type === 'success' ? '#28a745' : '#dc3545';
+            
+            setTimeout(() => {
+                statusEl.textContent = '';
+            }, 3000);
+        }
+
+        // 카드 애니메이션을 위한 결과 표시 개선
+        function displayResults(results) {
+            allResults = results;
+            const grid = document.getElementById('universityGrid');
+
+            if (!results || results.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h3>😔 해당 등급 범위(±0.1)의 지원 가능한 대학이 없습니다</h3>
+                        <p>등급을 다시 확인해주세요</p>
+                        <p>실제 데이터를 사용하려면 university_data.json 파일을 준비해주세요.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // 기존 카드들 페이드아웃
+            const existingCards = grid.querySelectorAll('.university-card');
+            existingCards.forEach(card => card.classList.add('fade-out'));
+
+            setTimeout(() => {
+                cardAnimationIndex = 0;
+                grid.innerHTML = results.map((university, index) => `
+                    <div class="university-card" style="--card-index: ${index}">
+                        <div class="university-name">
+                            <span>${university.name}</span>
+                            <span class="rank-badge">${university.rank}위</span>
+                        </div>
+                        <div class="department-list">
+                            ${university.departments.map(dept => `
+                                <div style="margin-bottom: 8px;">
+                                    <div class="department-name">${dept.name}</div>
+                                    <div class="department-grade">등급: ${dept.grade}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }, 300);
+        }
+
+        function displaySearchResults(results) {
+            const grid = document.getElementById('universityGrid');
+            
+            if (results.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h3>😔 검색 결과가 없습니다</h3>
+                        <p>다른 검색어로 시도해보세요</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // 대학별로 그룹화 (검색 결과는 모든 대학 포함)
+            const universityGroups = {};
+            results.forEach(item => {
+                if (!universityGroups[item.대학명]) {
+                    universityGroups[item.대학명] = {
+                        name: item.대학명,
+                        rank: item.순위 || 999,
+                        departments: []
+                    };
+                }
+                universityGroups[item.대학명].departments.push({
+                    name: item.학과명,
+                    grade: item.등급
+                });
+            });
+
+            const sortedUniversities = Object.values(universityGroups)
+                .sort((a, b) => a.rank - b.rank);
+
+            // 기존 카드들 페이드아웃
+            const existingCards = grid.querySelectorAll('.university-card');
+            existingCards.forEach(card => card.classList.add('fade-out'));
+
+            setTimeout(() => {
+                grid.innerHTML = sortedUniversities.map((university, index) => `
+                    <div class="university-card" style="--card-index: ${index}">
+                        <div class="university-name">
+                            <span>${university.name}</span>
+                            ${university.rank !== 999 ? `<span class="rank-badge">${university.rank}위</span>` : ''}
+                        </div>
+                        <div class="department-list">
+                            ${university.departments.map(dept => `
+                                <div style="margin-bottom: 8px;">
+                                    <div class="department-name">${dept.name}</div>
+                                    <div class="department-grade">등급: ${dept.grade}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }, 300);
+        }
 
         // 예측 버튼 활성화/비활성화
         function updatePredictButton() {
@@ -675,7 +1118,8 @@
             calculatedAverageGrade = calculateAverageGrade(userGrades, selectedTrack);
             displayAverageGrade(userGrades, selectedTrack);
 
-            const results = predictUniversities(userGrades, selectedTrack);
+            // ±0.1 범위로 대학 검색
+            const results = searchUniversitiesByGrade(calculatedAverageGrade, selectedTrack);
             displayResults(results);
             document.getElementById('resultsSection').classList.add('show');
             document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
@@ -721,122 +1165,163 @@
             });
         }
 
-        // 확률 탭 처리
-        document.querySelectorAll('.probability-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.probability-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                currentProbabilityType = this.dataset.type;
-                
-                if (calculatedAverageGrade > 0) {
-                    const results = searchUniversitiesByGrade(calculatedAverageGrade, selectedTrack);
-                    displayResultsByProbability(results);
-                }
-            });
+        // 검색 기능
+        document.getElementById('searchBtn').addEventListener('click', performSearch);
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        document.getElementById('clearSearchBtn').addEventListener('click', function() {
+            document.getElementById('searchInput').value = '';
+            if (calculatedAverageGrade > 0) {
+                displayResults(allResults);
+            }
         });
 
-        // 대학 예측 로직
-        function predictUniversities(userGrades, track) {
-            return searchUniversitiesByGrade(calculatedAverageGrade, track);
-        }
-
-        // 등급으로 대학 검색
-        function searchUniversitiesByGrade(userGrade, track) {
-            const data = universityData[track];
-            if (!data || data.length === 0) {
-                return { safe: [], moderate: [], challenge: [] };
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (!searchTerm) {
+                alert('검색어를 입력해주세요.');
+                return;
             }
 
-            // 등급 범위 설정
-            const gradeRange = 0.3;
-            const safeRange = userGrade - 0.1; // 안정권: 사용자 등급보다 0.1 낮음
-            const moderateRange = userGrade + 0.1; // 적정권: 사용자 등급 ±0.1
-            const challengeRange = userGrade + 0.3; // 소신권: 사용자 등급 +0.3
-
-            const results = {
-                safe: [],
-                moderate: [],
-                challenge: []
-            };
-
-            // 대학별로 그룹화 (순위순, 대학당 최대 3개 학과)
-            const universityGroups = {};
+            const searchResults = searchUniversityAndDepartment(searchTerm);
+            displaySearchResults(searchResults);
             
-            data.forEach(item => {
-                if (item.등급 <= challengeRange) { // 소신권 범위 내의 대학만
-                    if (!universityGroups[item.대학명]) {
-                        universityGroups[item.대학명] = {
-                            name: item.대학명,
-                            rank: item.순위,
-                            departments: []
-                        };
-                    }
-                    
-                    if (universityGroups[item.대학명].departments.length < 3) {
-                        universityGroups[item.대학명].departments.push({
-                            name: item.학과명,
-                            grade: item.등급
-                        });
-                    }
-                }
-            });
+            // 결과 섹션 보이기
+            document.getElementById('resultsSection').classList.add('show');
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
 
-            // 각 대학을 적절한 카테고리에 분류
-            Object.values(universityGroups).forEach(university => {
-                const avgGrade = university.departments.reduce((sum, dept) => sum + dept.grade, 0) / university.departments.length;
-                
-                if (avgGrade <= safeRange) {
-                    results.safe.push(university);
-                } else if (avgGrade <= moderateRange) {
-                    results.moderate.push(university);
-                } else {
-                    results.challenge.push(university);
-                }
-            });
-
-            // 순위순으로 정렬
-            Object.keys(results).forEach(key => {
-                results[key].sort((a, b) => a.rank - b.rank);
-            });
+        function searchUniversityAndDepartment(searchTerm) {
+            const allData = [...universityData.문과, ...universityData.이과];
+            
+            const results = allData.filter(item => 
+                item.대학명.toLowerCase().includes(searchTerm) || 
+                item.학과명.toLowerCase().includes(searchTerm)
+            ).sort((a, b) => a.등급 - b.등급); // 등급순 정렬
 
             return results;
         }
 
-        // 결과 표시
-        function displayResults(results) {
-            displayResultsByProbability(results);
-        }
-
-        function displayResultsByProbability(results) {
+        function displaySearchResults(results) {
             const grid = document.getElementById('universityGrid');
-            const currentResults = results[currentProbabilityType];
-
-            if (!currentResults || currentResults.length === 0) {
+            
+            if (results.length === 0) {
                 grid.innerHTML = `
                     <div class="no-results">
-                        <h3>😔 해당 확률대의 지원 가능한 대학이 없습니다</h3>
-                        <p>다른 확률대를 확인해보세요</p>
+                        <h3>😔 검색 결과가 없습니다</h3>
+                        <p>다른 검색어로 시도해보세요</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // 대학별로 그룹화 (검색 결과는 모든 대학 포함)
+            const universityGroups = {};
+            results.forEach(item => {
+                if (!universityGroups[item.대학명]) {
+                    universityGroups[item.대학명] = {
+                        name: item.대학명,
+                        rank: item.순위 || 999,
+                        departments: []
+                    };
+                }
+                universityGroups[item.대학명].departments.push({
+                    name: item.학과명,
+                    grade: item.등급
+                });
+            });
+
+            const sortedUniversities = Object.values(universityGroups)
+                .sort((a, b) => a.rank - b.rank);
+
+            grid.innerHTML = sortedUniversities.map(university => `
+                <div class="university-card">
+                    <div class="university-name">
+                        <span>${university.name}</span>
+                        ${university.rank !== 999 ? `<span class="rank-badge">${university.rank}위</span>` : ''}
+                    </div>
+                    <div class="department-list">
+                        ${university.departments.map(dept => `
+                            <div style="margin-bottom: 8px;">
+                                <div class="department-name">${dept.name}</div>
+                                <div class="department-grade">등급: ${dept.grade}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 등급으로 대학 검색 (±0.1 범위)
+        function searchUniversitiesByGrade(userGrade, track) {
+            const data = universityData[track];
+            if (!data || data.length === 0) {
+                return [];
+            }
+
+            // ±0.1 등급 범위
+            const gradeRange = 0.1;
+            const minGrade = userGrade - gradeRange;
+            const maxGrade = userGrade + gradeRange;
+
+            const matchingUniversities = data.filter(item => 
+                item.등급 >= minGrade && item.등급 <= maxGrade
+            );
+
+            // 대학별로 그룹화 (순위순, 대학당 최대 3개 학과)
+            const universityGroups = {};
+            matchingUniversities.forEach(item => {
+                if (!universityGroups[item.대학명]) {
+                    universityGroups[item.대학명] = {
+                        name: item.대학명,
+                        rank: item.순위,
+                        departments: []
+                    };
+                }
+                
+                if (universityGroups[item.대학명].departments.length < 3) {
+                    universityGroups[item.대학명].departments.push({
+                        name: item.학과명,
+                        grade: item.등급
+                    });
+                }
+            });
+
+            return Object.values(universityGroups).sort((a, b) => a.rank - b.rank);
+        }
+
+        // 결과 표시
+        function displayResults(results) {
+            allResults = results;
+            const grid = document.getElementById('universityGrid');
+
+            if (!results || results.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h3>😔 해당 등급 범위(±0.1)의 지원 가능한 대학이 없습니다</h3>
+                        <p>등급을 다시 확인해주세요</p>
                         <p>실제 데이터를 사용하려면 university_data.json 파일을 준비해주세요.</p>
                     </div>
                 `;
                 return;
             }
 
-            grid.innerHTML = currentResults.map(university => `
-                <div class="university-card ${currentProbabilityType}">
+            grid.innerHTML = results.map(university => `
+                <div class="university-card">
                     <div class="university-name">
                         <span>${university.name}</span>
                         <span class="rank-badge">${university.rank}위</span>
                     </div>
                     <div class="department-list">
                         ${university.departments.map(dept => `
-                            <div class="department-name">${dept.name}</div>
-                            <div class="department-grade">등급: ${dept.grade}</div>
+                            <div style="margin-bottom: 8px;">
+                                <div class="department-name">${dept.name}</div>
+                                <div class="department-grade">등급: ${dept.grade}</div>
+                            </div>
                         `).join('')}
-                    </div>
-                    <div class="probability-badge ${currentProbabilityType}">
-                        ${currentProbabilityType === 'safe' ? '안정권' : 
-                          currentProbabilityType === 'moderate' ? '적정권' : '소신권'}
                     </div>
                 </div>
             `).join('');
