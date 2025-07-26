@@ -952,14 +952,41 @@
             
             /* 대학 카드 */
             .university-grid {
-                grid-template-columns: 1fr;
-                gap: 4vw;
+                grid-template-columns: repeat(2, 1fr); /* 2열로 변경 */
+                gap: 3vw; /* 간격 줄이기 */
             }
             
             .university-card {
-                padding: 4vw;
+                padding: 3vw; /* 패딩 줄이기 */
                 border-radius: 3vw;
                 border-left-width: 1vw;
+            }
+            
+            .university-name {
+                font-size: 3.2vw; /* 폰트 줄이기 */
+                margin-bottom: 2vw;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5vw;
+            }
+            
+            .rank-badge {
+                padding: 1vw 2.5vw; /* 배지 크기 줄이기 */
+                border-radius: 3vw;
+                font-size: 2.5vw;
+                align-self: flex-start;
+            }
+            
+            .department-name {
+                font-size: 3vw; /* 학과명 폰트 줄이기 */
+                margin-bottom: 1.5vw;
+            }
+            
+            .department-grade {
+                padding: 1vw 2vw; /* 등급 표시 줄이기 */
+                border-radius: 2.5vw;
+                font-size: 2.5vw;
+                margin-bottom: 1.5vw;
             }
             
             .university-name {
