@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -99,11 +99,12 @@
 
         .header h1 .system-name {
             display: block;
-            font-weight: 200;
+            font-weight: 400;
             font-size: 0.75em;
             margin-top: 8px;
             opacity: 0.95;
             letter-spacing: 0.05em;
+            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
         }
 
         .header p {
@@ -667,6 +668,88 @@
             color: #666;
         }
 
+        /* 학과 카테고리 필터 스타일 */
+        .category-filter {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-filter h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 8px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #495057;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .category-btn:hover {
+            border-color: #4facfe;
+            background: #f0f8ff;
+            transform: translateY(-1px);
+        }
+
+        .category-btn.active {
+            border-color: #4facfe;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(79, 172, 254, 0.3);
+        }
+
+        .category-btn.all {
+            background: #6c757d;
+            color: white;
+            border-color: #6c757d;
+        }
+
+        .category-btn.all.active {
+            background: #495057;
+            border-color: #495057;
+        }
+
+        /* 백분위 표시 스타일 */
+        .percentile-info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .percentile-text {
+            font-size: 1rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .percentile-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4facfe;
+        }
+
         @media (max-width: 768px) {
             .main-content {
                 padding: 20px;
@@ -872,9 +955,26 @@
                 </div>
 
                 <div class="average-grade-display" id="averageGradeDisplay">
-                    <h3>📈 계산된 평균 등급</h3>
+                    <h3>📈 평균 등급</h3>
                     <div class="grade" id="averageGrade">-</div>
                     <div class="grade-breakdown" id="gradeBreakdown"></div>
+                </div>
+
+                <!-- 학과 카테고리 필터 -->
+                <div class="category-filter">
+                    <h3>🎓 학과 카테고리 필터</h3>
+                    <div class="category-buttons">
+                        <button class="category-btn all active" data-category="전체">전체</button>
+                        <button class="category-btn" data-category="경영/경제">💼 경영/경제</button>
+                        <button class="category-btn" data-category="공학">🔧 공학</button>
+                        <button class="category-btn" data-category="의료/보건">🏥 의료/보건</button>
+                        <button class="category-btn" data-category="교육">👨‍🏫 교육</button>
+                        <button class="category-btn" data-category="인문/어학">📚 인문/어학</button>
+                        <button class="category-btn" data-category="사회과학">🏛️ 사회과학</button>
+                        <button class="category-btn" data-category="자연과학">🔬 자연과학</button>
+                        <button class="category-btn" data-category="예술/체육">🎨 예술/체육</button>
+                        <button class="category-btn" data-category="IT">💻 IT</button>
+                    </div>
                 </div>
 
 
@@ -892,6 +992,36 @@
         let calculatedAverageGrade = 0;
         let allResults = [];
         let cardAnimationIndex = 0;
+        let selectedCategory = '전체';
+
+        // 학과 카테고리 매핑
+        const departmentCategories = {
+            '경영/경제': ['경영', '경제', '회계', '무역', '금융', '마케팅', '광고', '유통', '물류', '국제통상', '글로벌', '비즈니스'],
+            '공학': ['공학', '기계', '전자', '전기', '화학', '건축', '토목', '산업', '재료', '항공', '조선', '자동차', '에너지', '환경공학', '건설'],
+            '의료/보건': ['의학', '간호', '치의학', '약학', '한의학', '물리치료', '작업치료', '임상병리', '방사선', '치기공', '의료', '보건', '재활'],
+            '교육': ['교육', '유아교육', '초등교육', '특수교육', '체육교육', '음악교육', '미술교육', '국어교육', '영어교육', '수학교육', '과학교육'],
+            '인문/어학': ['국어', '영어', '중국어', '일본어', '독일어', '프랑스어', '러시아어', '언어', '문학', '철학', '종교', '사학', '고고학'],
+            '사회과학': ['정치', '행정', '외교', '사회', '심리', '언론', '미디어', '커뮤니케이션', '광고홍보', '사회복지', '법학', '경찰'],
+            '자연과학': ['수학', '물리', '화학', '생물', '지구과학', '천문', '해양', '지질', '환경과학', '식품', '생명과학', '바이오'],
+            '예술/체육': ['음악', '미술', '디자인', '무용', '연기', '영화', '사진', '체육', '스포츠', '태권도', '골프', '레저'],
+            'IT': ['컴퓨터', '소프트웨어', 'IT', '정보', '전산', '인공지능', 'AI', '빅데이터', '사이버보안', '게임', '멀티미디어', '디지털']
+        };
+
+        // 등급별 백분위 매핑 (수능 기준 - 정확한 계산)
+        // 백분위는 "자신보다 낮은 점수를 받은 학생들의 비율"
+        function getPercentile(grade) {
+            // 등급별 백분위 범위 (상위 %가 아닌 하위 %임)
+            if (grade <= 1.0) return 100;
+            if (grade <= 1.5) return Math.round(100 - (grade - 1.0) * 8); // 100~96
+            if (grade <= 2.0) return Math.round(96 - (grade - 1.5) * 14); // 96~89  
+            if (grade <= 3.0) return Math.round(89 - (grade - 2.0) * 12); // 89~77
+            if (grade <= 4.0) return Math.round(77 - (grade - 3.0) * 17); // 77~60
+            if (grade <= 5.0) return Math.round(60 - (grade - 4.0) * 20); // 60~40
+            if (grade <= 6.0) return Math.round(40 - (grade - 5.0) * 17); // 40~23
+            if (grade <= 7.0) return Math.round(23 - (grade - 6.0) * 12); // 23~11
+            if (grade <= 8.0) return Math.round(11 - (grade - 7.0) * 7);  // 11~4
+            return Math.max(1, Math.round(4 - (grade - 8.0) * 3));       // 4~1
+        }
 
         // 대학 데이터 (실제로는 JSON 파일에서 로드)
         let universityData = {
@@ -1017,7 +1147,12 @@
                 const averageGrade = calculateAverageGrade(userGrades, selectedTrack);
                 const inquiryAverage = (userGrades.inquiry1 + userGrades.inquiry2) / 2;
 
-                document.getElementById('previewGrade').textContent = averageGrade.toFixed(2);
+                // 백분위 계산
+                const percentile = getPercentile(averageGrade);
+                
+                // 등급과 백분위를 함께 표시
+                document.getElementById('previewGrade').textContent = 
+                    `${averageGrade.toFixed(2)} (백분위 ${percentile})`;
                 
                 const breakdown = selectedTrack === '문과' ? {
                     '국어': `${korean} (30%)`,
@@ -1256,11 +1391,63 @@
             }
         }
 
-        // 평균 등급 표시
+        // 카테고리 필터 이벤트
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedCategory = this.dataset.category;
+                
+                // 현재 결과가 있다면 필터링 적용
+                if (allResults && allResults.length > 0) {
+                    const filteredResults = filterByCategory(allResults, selectedCategory);
+                    displayResults(filteredResults);
+                }
+            });
+        });
+
+        // 학과 카테고리 필터링 함수
+        function filterByCategory(results, category) {
+            if (category === '전체') return results;
+            
+            return results.filter(university => {
+                return university.departments.some(dept => {
+                    const keywords = departmentCategories[category] || [];
+                    return keywords.some(keyword => 
+                        dept.name.toLowerCase().includes(keyword.toLowerCase())
+                    );
+                });
+            }).map(university => ({
+                ...university,
+                departments: university.departments.filter(dept => {
+                    const keywords = departmentCategories[category] || [];
+                    return keywords.some(keyword => 
+                        dept.name.toLowerCase().includes(keyword.toLowerCase())
+                    );
+                })
+            }));
+        }
+
+        // 학과 분류 함수
+        function categorizeDepartment(deptName) {
+            for (const [category, keywords] of Object.entries(departmentCategories)) {
+                if (keywords.some(keyword => deptName.toLowerCase().includes(keyword.toLowerCase()))) {
+                    return category;
+                }
+            }
+            return '기타';
+        }
+
+        // 평균 등급 표시 (백분위를 등급 옆에 표시)
         function displayAverageGrade(grades, track) {
             const inquiryAverage = (grades.inquiry1 + grades.inquiry2) / 2;
             
-            document.getElementById('averageGrade').textContent = calculatedAverageGrade.toFixed(2);
+            // 백분위 계산
+            const percentile = getPercentile(calculatedAverageGrade);
+            
+            // 등급과 백분위를 함께 표시
+            document.getElementById('averageGrade').textContent = 
+                `${calculatedAverageGrade.toFixed(2)} (백분위 ${percentile})`;
             
             const breakdown = track === '문과' ? {
                 '국어 (30%)': grades.korean,
