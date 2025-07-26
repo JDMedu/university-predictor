@@ -668,67 +668,6 @@
             color: #666;
         }
 
-        /* 학과 카테고리 필터 스타일 */
-        .category-filter {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .category-filter h3 {
-            color: #333;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .category-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .category-btn {
-            padding: 8px 16px;
-            border: 2px solid #e9ecef;
-            border-radius: 20px;
-            background: white;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #495057;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .category-btn:hover {
-            border-color: #4facfe;
-            background: #f0f8ff;
-            transform: translateY(-1px);
-        }
-
-        .category-btn.active {
-            border-color: #4facfe;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 10px rgba(79, 172, 254, 0.3);
-        }
-
-        .category-btn.all {
-            background: #6c757d;
-            color: white;
-            border-color: #6c757d;
-        }
-
-        .category-btn.all.active {
-            background: #495057;
-            border-color: #495057;
-        }
-
         /* 백분위 표시 스타일 */
         .percentile-info {
             margin-top: 15px;
@@ -992,20 +931,6 @@
         let calculatedAverageGrade = 0;
         let allResults = [];
         let cardAnimationIndex = 0;
-        let selectedCategory = '전체';
-
-        // 학과 카테고리 매핑
-        const departmentCategories = {
-            '경영/경제': ['경영', '경제', '회계', '무역', '금융', '마케팅', '광고', '유통', '물류', '국제통상', '글로벌', '비즈니스'],
-            '공학': ['공학', '기계', '전자', '전기', '화학', '건축', '토목', '산업', '재료', '항공', '조선', '자동차', '에너지', '환경공학', '건설'],
-            '의료/보건': ['의학', '간호', '치의학', '약학', '한의학', '물리치료', '작업치료', '임상병리', '방사선', '치기공', '의료', '보건', '재활'],
-            '교육': ['교육', '유아교육', '초등교육', '특수교육', '체육교육', '음악교육', '미술교육', '국어교육', '영어교육', '수학교육', '과학교육'],
-            '인문/어학': ['국어', '영어', '중국어', '일본어', '독일어', '프랑스어', '러시아어', '언어', '문학', '철학', '종교', '사학', '고고학'],
-            '사회과학': ['정치', '행정', '외교', '사회', '심리', '언론', '미디어', '커뮤니케이션', '광고홍보', '사회복지', '법학', '경찰'],
-            '자연과학': ['수학', '물리', '화학', '생물', '지구과학', '천문', '해양', '지질', '환경과학', '식품', '생명과학', '바이오'],
-            '예술/체육': ['음악', '미술', '디자인', '무용', '연기', '영화', '사진', '체육', '스포츠', '태권도', '골프', '레저'],
-            'IT': ['컴퓨터', '소프트웨어', 'IT', '정보', '전산', '인공지능', 'AI', '빅데이터', '사이버보안', '게임', '멀티미디어', '디지털']
-        };
 
         // 등급별 백분위 매핑 (수능 기준 - 정확한 계산)
         // 백분위는 "자신보다 낮은 점수를 받은 학생들의 비율"
