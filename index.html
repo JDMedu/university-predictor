@@ -1195,29 +1195,7 @@
                     <div class="grade-breakdown" id="gradeBreakdown"></div>
                 </div>
 
-                <!-- 학과 카테고리 필터 -->
-                <div class="category-filter">
-                    <h3>🎓 학과 카테고리 필터</h3>
-                    <div class="category-buttons">
-                        <button class="category-btn all active" data-category="전체">전체</button>
-                        <button class="category-btn" data-category="경영/경제">💼 경영/경제</button>
-                        <button class="category-btn" data-category="공학">🔧 공학</button>
-                        <button class="category-btn" data-category="의료/보건">🏥 의료/보건</button>
-                        <button class="category-btn" data-category="교육">👨‍🏫 교육</button>
-                        <button class="category-btn" data-category="인문/어학">📚 인문/어학</button>
-                        <button class="category-btn" data-category="사회과학">🏛️ 사회과학</button>
-                        <button class="category-btn" data-category="자연과학">🔬 자연과학</button>
-                        <button class="category-btn" data-category="예술/체육">🎨 예술/체육</button>
-                        <button class="category-btn" data-category="IT">💻 IT</button>
-                    </div>
-                </div>
-
-
-
-                <div class="university-grid" id="universityGrid">
-                    <!-- 결과가 여기에 표시됩니다 -->
-                </div>
-            </div>
+          
         </div>
     </div>
 
@@ -1612,52 +1590,7 @@
             }
         }
 
-        // 카테고리 필터 이벤트
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                selectedCategory = this.dataset.category;
-                
-                // 현재 결과가 있다면 필터링 적용
-                if (allResults && allResults.length > 0) {
-                    const filteredResults = filterByCategory(allResults, selectedCategory);
-                    displayResults(filteredResults);
-                }
-            });
-        });
-
-        // 학과 카테고리 필터링 함수
-        function filterByCategory(results, category) {
-            if (category === '전체') return results;
-            
-            return results.filter(university => {
-                return university.departments.some(dept => {
-                    const keywords = departmentCategories[category] || [];
-                    return keywords.some(keyword => 
-                        dept.name.toLowerCase().includes(keyword.toLowerCase())
-                    );
-                });
-            }).map(university => ({
-                ...university,
-                departments: university.departments.filter(dept => {
-                    const keywords = departmentCategories[category] || [];
-                    return keywords.some(keyword => 
-                        dept.name.toLowerCase().includes(keyword.toLowerCase())
-                    );
-                })
-            }));
-        }
-
-        // 학과 분류 함수
-        function categorizeDepartment(deptName) {
-            for (const [category, keywords] of Object.entries(departmentCategories)) {
-                if (keywords.some(keyword => deptName.toLowerCase().includes(keyword.toLowerCase()))) {
-                    return category;
-                }
-            }
-            return '기타';
-        }
+       
 
         // 평균 등급 표시 (백분위를 등급 옆에 표시)
         function displayAverageGrade(grades, track) {
