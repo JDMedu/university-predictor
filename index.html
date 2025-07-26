@@ -6,7 +6,13 @@
     <title>정동민국어논술학원 대학 입시 합격 예측 시스템</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Pretendard 폰트 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <!-- 백업 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -15,7 +21,7 @@
         }
 
         body {
-            font-family: 'Nanum Gothic', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Noto Sans KR', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -63,7 +69,7 @@
         .header h1 {
             font-size: 2.2rem;
             margin-bottom: 20px;
-            font-weight: 300;
+            font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.2;
             opacity: 0;
@@ -102,19 +108,19 @@
 
         .header h1 .system-name {
             display: block;
-            font-weight: 400;
+            font-weight: 500;
             font-size: 0.75em;
             margin-top: 8px;
             opacity: 0.95;
             letter-spacing: 0.05em;
-            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         }
 
         .header p {
             font-size: 1.1rem;
             opacity: 0;
             animation: subtitleFadeIn 1s ease-out 0.8s forwards;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.02em;
         }
 
@@ -127,9 +133,6 @@
                 opacity: 0.9;
                 transform: translateY(0);
             }
-        }
-            font-size: 1.1rem;
-            opacity: 0.9;
         }
 
         .main-content {
@@ -147,6 +150,7 @@
             color: #333;
             margin-bottom: 25px;
             font-size: 1.5rem;
+            font-weight: 600;
         }
 
         .form-group {
@@ -158,6 +162,7 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: #555;
+            letter-spacing: -0.01em;
         }
 
         /* 계열 선택 */
@@ -192,6 +197,7 @@
         .track-option h3 {
             font-size: 1.3rem;
             margin-bottom: 5px;
+            font-weight: 600;
         }
 
         /* 등급 입력 */
@@ -229,6 +235,8 @@
             font-size: 1rem;
             background: white;
             cursor: pointer;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-weight: 500;
         }
 
         .grade-select:focus {
@@ -250,6 +258,8 @@
             display: block;
             margin: 30px auto 0;
             min-width: 250px;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            letter-spacing: -0.01em;
         }
 
         .predict-btn:hover:not(:disabled) {
@@ -288,6 +298,7 @@
             color: #333;
             font-size: 2rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .average-grade-display {
@@ -303,6 +314,7 @@
             color: #4facfe;
             font-size: 1.5rem;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .average-grade-display .grade {
@@ -336,6 +348,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         }
 
         .probability-tab.safe {
@@ -409,6 +422,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            letter-spacing: -0.02em;
         }
 
         .rank-badge {
@@ -424,6 +438,7 @@
             font-size: 1.1rem;
             color: #666;
             margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .department-grade {
@@ -473,6 +488,7 @@
             font-size: 1.3rem;
             margin-bottom: 20px;
             text-align: center;
+            font-weight: 600;
         }
 
         .search-input-group {
@@ -492,6 +508,7 @@
             font-size: 1rem;
             outline: none;
             transition: border-color 0.3s ease;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         }
 
         .search-input:focus {
@@ -506,6 +523,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         }
 
         .search-btn {
@@ -549,6 +567,7 @@
             font-size: 1.1rem;
             margin-bottom: 10px;
             text-align: center;
+            font-weight: 600;
         }
 
         .preview-grade {
@@ -584,6 +603,7 @@
         .no-results h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
+            font-weight: 600;
         }
 
         /* 카드 스택 애니메이션 */
@@ -629,6 +649,10 @@
             text-align: center;
         }
 
+        .save-section h4 {
+            font-weight: 600;
+        }
+
         .save-buttons {
             display: flex;
             gap: 10px;
@@ -643,6 +667,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         }
 
         .save-btn {
@@ -932,8 +957,6 @@
                 font-size: 3vw;
             }
             
-           
-            
             /* 확률 탭 */
             .probability-tabs {
                 flex-wrap: wrap;
@@ -987,33 +1010,6 @@
                 border-radius: 2.5vw;
                 font-size: 2.5vw;
                 margin-bottom: 1.5vw;
-            }
-            
-            .university-name {
-                font-size: 4vw;
-                margin-bottom: 2vw;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2vw;
-            }
-            
-            .rank-badge {
-                padding: 1.5vw 3vw;
-                border-radius: 4vw;
-                font-size: 3vw;
-                align-self: flex-start;
-            }
-            
-            .department-name {
-                font-size: 3.5vw;
-                margin-bottom: 2vw;
-            }
-            
-            .department-grade {
-                padding: 1.5vw 3vw;
-                border-radius: 3vw;
-                font-size: 3vw;
-                margin-bottom: 2vw;
             }
             
             .probability-badge {
@@ -1218,8 +1214,6 @@
                     <h2>📊 예측 결과</h2>
                     <p>입력하신 등급을 기준으로 지원 가능한 대학들입니다</p>
                 </div>
-
-                
 
                 <div class="university-grid" id="universityGrid">
                     <!-- 결과가 여기에 표시됩니다 -->
@@ -1617,10 +1611,6 @@
             }
         }
 
-       
-
-        
-
         // 검색 기능
         document.getElementById('searchBtn').addEventListener('click', performSearch);
         document.getElementById('searchInput').addEventListener('keypress', function(e) {
@@ -1659,56 +1649,6 @@
             ).sort((a, b) => a.등급 - b.등급); // 등급순 정렬
 
             return results;
-        }
-
-        function displaySearchResults(results) {
-            const grid = document.getElementById('universityGrid');
-            
-            if (results.length === 0) {
-                grid.innerHTML = `
-                    <div class="no-results">
-                        <h3>😔 검색 결과가 없습니다</h3>
-                        <p>다른 검색어로 시도해보세요</p>
-                    </div>
-                `;
-                return;
-            }
-
-            // 대학별로 그룹화 (검색 결과는 모든 대학 포함)
-            const universityGroups = {};
-            results.forEach(item => {
-                if (!universityGroups[item.대학명]) {
-                    universityGroups[item.대학명] = {
-                        name: item.대학명,
-                        rank: item.순위 || 999,
-                        departments: []
-                    };
-                }
-                universityGroups[item.대학명].departments.push({
-                    name: item.학과명,
-                    grade: item.등급
-                });
-            });
-
-            const sortedUniversities = Object.values(universityGroups)
-                .sort((a, b) => a.rank - b.rank);
-
-            grid.innerHTML = sortedUniversities.map(university => `
-                <div class="university-card">
-                    <div class="university-name">
-                        <span>${university.name}</span>
-                        ${university.rank !== 999 ? `<span class="rank-badge">${university.rank}위</span>` : ''}
-                    </div>
-                    <div class="department-list">
-                        ${university.departments.map(dept => `
-                            <div style="margin-bottom: 8px;">
-                                <div class="department-name">${dept.name}</div>
-                                <div class="department-grade">등급: ${dept.grade}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
         }
 
         // 등급으로 대학 검색 (±0.1 범위)
