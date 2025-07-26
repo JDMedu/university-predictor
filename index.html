@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>정동민국어논술학원 대학 입시 합격 예측 시스템</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,7 +15,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            font-family: 'Nanum Gothic', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -1189,11 +1192,7 @@
                     <p>입력하신 등급을 기준으로 지원 가능한 대학들입니다</p>
                 </div>
 
-                <div class="average-grade-display" id="averageGradeDisplay">
-                    <h3>📈 평균 등급</h3>
-                    <div class="grade" id="averageGrade">-</div>
-                    <div class="grade-breakdown" id="gradeBreakdown"></div>
-                </div>
+                
 
                 <div class="university-grid" id="universityGrid">
                     <!-- 결과가 여기에 표시됩니다 -->
@@ -1356,15 +1355,15 @@
                     `${averageGrade.toFixed(2)} (백분위 ${percentile})`;
                 
                 const breakdown = selectedTrack === '문과' ? {
-                    '국어': `${korean} (30%)`,
-                    '수학': `${math} (30%)`,
-                    '영어': `${english} (15%)`,
-                    '탐구': `${inquiryAverage.toFixed(1)} (25%)`
+                    '국어': `${korean} (30% 반영)`,
+                    '수학': `${math} (30% 반영)`,
+                    '영어': `${english} (15% 반영)`,
+                    '탐구': `${inquiryAverage.toFixed(1)} (25% 반영)`
                 } : {
-                    '국어': `${korean} (25%)`,
-                    '수학': `${math} (33%)`,
-                    '영어': `${english} (15%)`,
-                    '탐구': `${inquiryAverage.toFixed(1)} (27%)`
+                    '국어': `${korean} (25% 반영)`,
+                    '수학': `${math} (33% 반영)`,
+                    '영어': `${english} (15% 반영)`,
+                    '탐구': `${inquiryAverage.toFixed(1)} (27% 반영)`
                 };
                 
                 const breakdownContainer = document.getElementById('previewBreakdown');
@@ -1570,7 +1569,6 @@
 
             // 평균 등급 계산
             calculatedAverageGrade = calculateAverageGrade(userGrades, selectedTrack);
-            displayAverageGrade(userGrades, selectedTrack);
 
             // ±0.1 범위로 대학 검색
             const results = searchUniversitiesByGrade(calculatedAverageGrade, selectedTrack);
@@ -1594,37 +1592,7 @@
 
        
 
-        // 평균 등급 표시 (백분위를 등급 옆에 표시)
-        function displayAverageGrade(grades, track) {
-            const inquiryAverage = (grades.inquiry1 + grades.inquiry2) / 2;
-            
-            // 백분위 계산
-            const percentile = getPercentile(calculatedAverageGrade);
-            
-            // 등급과 백분위를 함께 표시
-            document.getElementById('averageGrade').textContent = 
-                `${calculatedAverageGrade.toFixed(2)} (백분위 ${percentile})`;
-            
-            const breakdown = track === '문과' ? {
-                '국어 (30%)': grades.korean,
-                '수학 (30%)': grades.math,
-                '영어 (15%)': grades.english,
-                '탐구 (25%)': inquiryAverage.toFixed(1)
-            } : {
-                '국어 (25%)': grades.korean,
-                '수학 (33%)': grades.math,
-                '영어 (15%)': grades.english,
-                '탐구 (27%)': inquiryAverage.toFixed(1)
-            };
-            
-            const breakdownContainer = document.getElementById('gradeBreakdown');
-            breakdownContainer.innerHTML = '';
-            Object.entries(breakdown).forEach(([subject, grade]) => {
-                const div = document.createElement('div');
-                div.innerHTML = `<strong>${subject}:</strong> ${grade}등급`;
-                breakdownContainer.appendChild(div);
-            });
-        }
+        
 
         // 검색 기능
         document.getElementById('searchBtn').addEventListener('click', performSearch);
