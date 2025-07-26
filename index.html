@@ -690,43 +690,31 @@
         }
 
         @media (max-width: 768px) {
-            .main-content {
-                padding: 20px;
+            /* 전체 컨테이너 뷰포트 단위 적용 */
+            body {
+                padding: 3vw;
+                font-size: 3.5vw;
             }
             
-            .track-selection {
-                flex-direction: column;
+            .container {
+                border-radius: 4vw;
             }
             
-            .subjects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .probability-tabs {
-                flex-wrap: wrap;
-            }
-            
-            .university-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .grade-breakdown {
-                grid-template-columns: 1fr;
-            }
-
+            /* 헤더 모바일 최적화 */
             .header {
-                padding: 40px 20px;
+                padding: 8vw 4vw;
             }
 
             .header h1 {
-                font-size: 1.7rem;
+                font-size: 5.5vw;
                 line-height: 1.3;
+                margin-bottom: 4vw;
             }
 
             .header h1 .school-name {
                 font-size: 1em;
                 display: block;
-                margin-bottom: 5px;
+                margin-bottom: 2vw;
             }
 
             .header h1 .system-name {
@@ -734,7 +722,341 @@
             }
 
             .header p {
-                font-size: 1rem;
+                font-size: 3.8vw;
+            }
+            
+            /* 메인 콘텐츠 */
+            .main-content {
+                padding: 4vw;
+            }
+            
+            /* 입력 섹션 */
+            .input-section {
+                padding: 5vw;
+                border-radius: 3vw;
+                margin-bottom: 4vw;
+            }
+            
+            .input-section h2 {
+                font-size: 4.5vw;
+                margin-bottom: 4vw;
+            }
+            
+            /* 계열 선택 */
+            .track-selection {
+                flex-direction: column;
+                gap: 3vw;
+                margin-bottom: 5vw;
+            }
+            
+            .track-option {
+                padding: 4vw;
+                border-radius: 3vw;
+            }
+            
+            .track-option h3 {
+                font-size: 4vw;
+                margin-bottom: 2vw;
+            }
+            
+            .track-option p {
+                font-size: 3.2vw;
+            }
+            
+            /* 과목 그리드 */
+            .subjects-grid {
+                grid-template-columns: 1fr;
+                gap: 3vw;
+                margin-top: 4vw;
+            }
+            
+            .subject-input {
+                padding: 4vw;
+                border-radius: 2.5vw;
+            }
+            
+            .subject-input label {
+                font-size: 3.5vw;
+                margin-bottom: 2vw;
+            }
+            
+            .grade-select {
+                padding: 3vw;
+                border-radius: 2vw;
+                font-size: 3.5vw;
+            }
+            
+            /* 실시간 프리뷰 */
+            .realtime-preview {
+                padding: 4vw;
+                border-radius: 3vw;
+                margin-top: 4vw;
+            }
+            
+            .realtime-preview h4 {
+                font-size: 3.8vw;
+                margin-bottom: 2vw;
+            }
+            
+            .preview-grade {
+                font-size: 5vw;
+                margin-bottom: 3vw;
+            }
+            
+            .preview-breakdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2vw;
+                font-size: 3vw;
+            }
+            
+            .preview-breakdown div {
+                padding: 2vw;
+                border-radius: 2vw;
+            }
+            
+            /* 예측 버튼 */
+            .predict-btn {
+                padding: 4vw 8vw;
+                font-size: 4vw;
+                border-radius: 8vw;
+                margin: 5vw auto 0;
+                min-width: 60vw;
+            }
+            
+            /* 검색 섹션 */
+            .search-section {
+                padding: 4vw;
+                border-radius: 3vw;
+                margin-bottom: 4vw;
+            }
+            
+            .search-section h3 {
+                font-size: 4vw;
+                margin-bottom: 3vw;
+            }
+            
+            .search-input-group {
+                flex-direction: column;
+                gap: 2vw;
+            }
+            
+            .search-input {
+                max-width: 100%;
+                padding: 3vw 4vw;
+                border-radius: 5vw;
+                font-size: 3.5vw;
+            }
+            
+            .search-btn, .clear-search-btn {
+                padding: 3vw 5vw;
+                border-radius: 5vw;
+                font-size: 3.5vw;
+                width: 100%;
+            }
+            
+            .search-section p {
+                font-size: 3vw;
+                margin-top: 2vw;
+            }
+            
+            /* 성적 저장 섹션 */
+            .save-section {
+                padding: 4vw;
+                border-radius: 3vw;
+                margin-top: 4vw;
+            }
+            
+            .save-section h4 {
+                font-size: 3.8vw;
+                margin-bottom: 2vw;
+            }
+            
+            .save-section p {
+                font-size: 3vw;
+                margin-bottom: 3vw;
+            }
+            
+            .save-buttons {
+                flex-direction: column;
+                gap: 2vw;
+                margin-top: 3vw;
+            }
+            
+            .save-btn, .load-btn {
+                padding: 3vw 5vw;
+                border-radius: 4vw;
+                font-size: 3.5vw;
+                width: 100%;
+            }
+            
+            .save-status {
+                margin-top: 2vw;
+                font-size: 3vw;
+            }
+            
+            /* 결과 섹션 */
+            .results-header h2 {
+                font-size: 5vw;
+                margin-bottom: 2vw;
+            }
+            
+            .results-header p {
+                font-size: 3.5vw;
+            }
+            
+            /* 평균 등급 표시 */
+            .average-grade-display {
+                padding: 4vw;
+                border-radius: 3vw;
+                margin-bottom: 4vw;
+            }
+            
+            .average-grade-display h3 {
+                font-size: 4vw;
+                margin-bottom: 3vw;
+            }
+            
+            .average-grade-display .grade {
+                font-size: 6vw;
+                margin-bottom: 2vw;
+            }
+            
+            /* 등급 분석 */
+            .grade-breakdown {
+                grid-template-columns: 1fr;
+                gap: 2vw;
+                margin-top: 3vw;
+                font-size: 3vw;
+            }
+            
+            /* 카테고리 필터 */
+            .category-filter h3 {
+                font-size: 4vw;
+                margin-bottom: 3vw;
+            }
+            
+            .category-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2vw;
+                justify-content: center;
+            }
+            
+            .category-btn {
+                padding: 2.5vw 4vw;
+                border-radius: 4vw;
+                font-size: 3vw;
+                border: none;
+                background: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .category-btn.active {
+                background: #4facfe;
+                color: white;
+            }
+            
+            /* 확률 탭 */
+            .probability-tabs {
+                flex-wrap: wrap;
+                gap: 2vw;
+                margin-bottom: 4vw;
+                justify-content: center;
+            }
+            
+            .probability-tab {
+                padding: 3vw 5vw;
+                border-radius: 5vw;
+                font-size: 3vw;
+                flex: 1;
+                min-width: 25vw;
+            }
+            
+            /* 대학 카드 */
+            .university-grid {
+                grid-template-columns: 1fr;
+                gap: 4vw;
+            }
+            
+            .university-card {
+                padding: 4vw;
+                border-radius: 3vw;
+                border-left-width: 1vw;
+            }
+            
+            .university-name {
+                font-size: 4vw;
+                margin-bottom: 2vw;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2vw;
+            }
+            
+            .rank-badge {
+                padding: 1.5vw 3vw;
+                border-radius: 4vw;
+                font-size: 3vw;
+                align-self: flex-start;
+            }
+            
+            .department-name {
+                font-size: 3.5vw;
+                margin-bottom: 2vw;
+            }
+            
+            .department-grade {
+                padding: 1.5vw 3vw;
+                border-radius: 3vw;
+                font-size: 3vw;
+                margin-bottom: 2vw;
+            }
+            
+            .probability-badge {
+                padding: 1.5vw 3vw;
+                border-radius: 4vw;
+                font-size: 3vw;
+            }
+            
+            /* 백분위 정보 */
+            .percentile-info {
+                margin-top: 3vw;
+                padding: 3vw;
+                border-radius: 2vw;
+                border-left-width: 1vw;
+            }
+            
+            .percentile-text {
+                font-size: 3.2vw;
+            }
+            
+            .percentile-number {
+                font-size: 3.8vw;
+            }
+            
+            /* 결과 없음 */
+            .no-results {
+                padding: 8vw 6vw;
+            }
+            
+            .no-results h3 {
+                font-size: 4.5vw;
+                margin-bottom: 3vw;
+            }
+            
+            .no-results p {
+                font-size: 3.5vw;
+                margin-bottom: 2vw;
+            }
+            
+            /* 폼 그룹 */
+            .form-group {
+                margin-bottom: 4vw;
+            }
+            
+            .form-group label {
+                font-size: 3.5vw;
+                margin-bottom: 2vw;
             }
         }
     </style>
